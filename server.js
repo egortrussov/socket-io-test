@@ -15,9 +15,28 @@ io.on('connection', (socket) => {
 
   socket.on('chat message', (msg) => {
     console.log('message: ' + msg);
-    io.emit('chat message', msg)
+    io.emit('chat newMessage', {
+      ...msg,
+      type: 'message'
+    })
   });
+
+  socket.on('chat login', (username) => {
+    io.emit('chat newMessage', {
+      username,
+      type: 'login'
+    })
+  })
+
+  socket.on('user timer', () => {
+    let seconds = 0;
+    setInterval(() => {
+      socket.emit('timer', seconds);
+      seconds++;
+    }, 1000)
+  })
 });
+
 
 http.listen(5000, () => {
   console.log('listening on *:5000');
