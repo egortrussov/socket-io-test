@@ -2,42 +2,22 @@ var app = require('express')();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
+// const app = express();
+
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/html/index.html');
-});
-
-io.on('connection', (socket) => {
-  console.log('a user connected');
-
-  socket.on('disconnect', () => {
-      console.log('a user disconnected')
+  res.json({
+    msg: 'hello'
   })
+})
 
-  socket.on('chat message', (msg) => {
-    console.log('message: ' + msg);
-    io.emit('chat newMessage', {
-      ...msg,
-      type: 'message'
-    })
-  });
+// const httpServer = http.createServer(app);
 
-  socket.on('chat login', (username) => {
-    io.emit('chat newMessage', {
-      username,
-      type: 'login'
-    })
-  })
+// const io = socketIO(httpServer);
 
-  socket.on('user timer', () => {
-    let seconds = 0;
-    setInterval(() => {
-      socket.emit('timer', seconds);
-      seconds++;
-    }, 1000)
-  })
-});
+io.on('conection', (socket) => {
 
+})
 
 http.listen(5000, () => {
-  console.log('listening on *:5000');
-});
+  console.log('Server running on PORT 5000')
+})
