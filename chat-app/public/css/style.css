@@ -98,6 +98,14 @@ a {
 	border-radius: 5px;
 }
 
+.message.leave {
+	background-color: rgb(255, 224, 224);
+}
+
+.message.connect {
+	background-color: rgb(225, 255, 221);
+}
+
 .chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;
