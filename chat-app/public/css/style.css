@@ -106,6 +106,13 @@ a {
 	background-color: rgb(225, 255, 221);
 }
 
+.message.admin {
+	background-color: rgb(255, 252, 221);
+}
+.message.global {
+	background-color: rgb(255, 221, 247);
+}
+
 .chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;
